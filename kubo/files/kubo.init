@@ -11,7 +11,7 @@ procd_append_args(){
 
 load_config(){
     config_load kubo
-    config_get_bool enabled config enabled 1
+    config_get_bool enabled config enabled 0
     config_get IPFS_PATH config workdir "/etc/kubo"
     config_get_bool enable_gc config enable_gc 1
     config_get_bool enable_namesys_pubsub config enable_namesys_pubsub 1
@@ -20,13 +20,13 @@ load_config(){
 start_service() {
     load_config
 
-    [ $enabled ] || return 1
+    [ $enabled -ne 1 ] && return 1
 
     procd_open_instance
     procd_set_param command $PROG daemon
     [ -d "$workdir" ] || procd_append_args "--init"
-    [ $enable_gc ] && procd_append_args "--enable-gc"
-    [ $enable_namesys_pubsub ] &&  procd_append_args "--enable-namesys-pubsub"
+    [ $enable_gc -eq 1 ] && procd_append_args "--enable-gc"
+    [ $enable_namesys_pubsub -eq 1 ] &&  procd_append_args "--enable-namesys-pubsub"
     procd_set_param stdout 1
     procd_set_param stderr 1
     procd_set_param env IPFS_PATH="$IPFS_PATH"
@@ -39,8 +39,7 @@ start_service() {
 }
 
 service_triggers() {
-    load_config
-    procd_add_reload_trigger "kubo"
+    procd_add_reload_trigger "kubo" "network"
 }
 
 stop_service(){
