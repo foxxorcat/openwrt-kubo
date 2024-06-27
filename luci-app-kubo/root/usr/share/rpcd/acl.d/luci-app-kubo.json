@@ -1,0 +1,11 @@
+{
+	"luci-app-kubo": {
+		"description": "Grant UCI access for luci-app-kubo",
+		"read": {
+			"uci": [ "kubo" ]
+		},
+		"write": {
+			"uci": [ "kubo" ]
+		}
+	}
+}

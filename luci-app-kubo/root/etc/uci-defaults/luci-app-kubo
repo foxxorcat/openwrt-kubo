@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@kubo[-1]
+	add ucitrack kubo
+	set ucitrack.@kubo[-1].init=kubo
+	commit ucitrack
+EOF
+
+rm -rf /tmp/luci-indexcache*
+exit 0
