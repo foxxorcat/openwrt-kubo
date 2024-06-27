@@ -21,11 +21,11 @@ msgstr "启用"
 msgid "kubo working dir"
 msgstr "Kubo 工作目录"
 
-msgid "Enable gc flag"
-msgstr "启动GC选项"
+msgid "Enable GC"
+msgstr "启动GC"
 
 msgid "Enable IPNS over pubsub"
-msgstr "通过pubsub启用IPNS"
+msgstr "启用基于pubsub的IPFS"
 
 msgid "run kubo as daemon"
 msgstr "启动Kubo后台监听"

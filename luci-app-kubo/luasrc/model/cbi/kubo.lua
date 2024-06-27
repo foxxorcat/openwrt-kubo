@@ -29,7 +29,7 @@ workdir.placeholder           = '/etc/kubo'
 workdir.default               = '/etc/kubo'
 workdir.datatype              = "string"
 
-enable_gc                     = s:taboption('basic', Flag, 'enable_gc', translate('Enable gc flag'))
+enable_gc                     = s:taboption('basic', Flag, 'enable_gc', translate('Enable GC'))
 enable.rmempty                = false
 
 enable_namesys_pubsub         = s:taboption('basic', Flag, 'enable_namesys_pubsub', translate('Enable IPNS over pubsub'))
